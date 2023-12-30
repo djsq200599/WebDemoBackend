@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">
+      Agregar Visitas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card class="registro-card">
+    <ion-card-content>
+      <!-- Nombre Completo -->
+      <ion-item>
+        <ion-label position="floating" class="label">Nombre Completo</ion-label>
+        <ion-input [(ngModel)]="nuevaVisita.fullName" name="fullName" type="text" class="input"
+          (ionChange)="validarNombre()"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="nombreInvalido">
+        Ingresa un nombre válido.
+      </ion-text>
+
+      <!-- RUT -->
+      <ion-item>
+        <ion-label position="floating" class="label">RUT</ion-label>
+        <div style="display: flex; align-items: center;">
+          <ion-input [(ngModel)]="nuevaVisita.rut.numero" name="rutNumero" type="text" style="flex: 80%;"
+            class="input" (ionChange)="validarRut()"></ion-input>
+          <!-- Guion separador -->
+          <ion-text style="flex: 10%; text-align: center;" class="guion">-</ion-text>
+          <ion-input [(ngModel)]="nuevaVisita.rut.digitoVerificador" name="rutDigitoVerificador" type="text"
+            style="flex: 10%;" class="input" (ionChange)="validarRut()"></ion-input>
+        </div>
+      </ion-item>
+      <ion-text color="danger" *ngIf="rutInvalido">
+        Ingresa un RUT válido.
+      </ion-text>
+
+      <!-- Número de Teléfono -->
+      <ion-item>
+        <ion-label position="floating" class="label">Número de Teléfono</ion-label>
+        <ion-input [(ngModel)]="nuevaVisita.phoneNumber" name="phoneNumber" type="tel" class="input"
+          (ionChange)="validarTelefono()"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="telefonoInvalido">
+        Ingresa un número de teléfono válido.
+      </ion-text>
+
+      <!-- Departamento -->
+      <ion-item>
+        <ion-label position="floating" class="label">Departamento</ion-label>
+        <ion-input [(ngModel)]="nuevaVisita.department" name="department" type="text" class="input"
+          (ionChange)="validarDepartamento()"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="departamentoInvalido">
+        Ingresa un departamento válido.
+      </ion-text>
+
+      <!-- Torre -->
+      <ion-item>
+        <ion-label class="label">Torre</ion-label>
+        <ion-select [(ngModel)]="nuevaVisita.tower" name="tower" class="select">
+          <ion-select-option value="A">A</ion-select-option>
+          <ion-select-option value="B">B</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Spinner de carga -->
+      <ion-spinner *ngIf="cargando" class="spinner"></ion-spinner>
+
+      <!-- Botón deshabilitado durante la carga -->
+      <ion-button expand="full" (click)="agregarVisita()" [disabled]="cargando" class="boton">
+        Agregar Visita
+      </ion-button>
+
+      <!-- Mensaje de error para formulario inválido -->
+      <ion-text color="danger" *ngIf="formularioInvalido" class="error-message">
+        Complete de manera correcta los campos inválidos.
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
