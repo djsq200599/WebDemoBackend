@@ -3,6 +3,7 @@ import { FirestoreService, Visit } from '../services/firestore.service';
 import { Observable } from 'rxjs';
 import { DocumentChangeAction } from '@angular/fire/compat/firestore';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class HomePage implements OnInit {
 
   constructor(
     private firestoreService: FirestoreService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -41,14 +43,18 @@ export class HomePage implements OnInit {
 
   async agregarVisita() {
     this.cargando = true;
-
+  
     if (this.validarNombre() && this.validarRut() && this.validarTelefono() && this.validarDepartamento()) {
       try {
         // Agregar automáticamente la fecha y hora actual
         this.nuevaVisita.fechaHora = new Date();
-
+  
         await this.firestoreService.addVisit(this.nuevaVisita);
         this.mostrarAlerta('Visita ingresada');
+        
+        // Redirigir a OtraPagina después de agregar con éxito
+        this.router.navigate(['/out-home']);
+        
         this.nuevaVisita = {
           fullName: '',
           rut: {
@@ -61,7 +67,7 @@ export class HomePage implements OnInit {
         };
         this.nombreInvalido = false;
         this.telefonoInvalido = false;
-        this.rutInvalido = false;  // Corregir el nombre de la propiedad
+        this.rutInvalido = false;
         this.departamentoInvalido = false;
       } catch (error) {
         console.error('Error al agregar visita:', error);

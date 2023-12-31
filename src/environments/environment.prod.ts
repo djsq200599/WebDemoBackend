@@ -1,12 +1,11 @@
 export const environment = {
-  production: false,
+  production: true,
 
   firebaseConfig:{
-  apiKey: "AIzaSyAWkHS5xfz9NFGC7shJuZYyz8orrPZXmLE",
-  authDomain: "prototipo-auth.firebaseapp.com",
-  databaseURL: "https://prototipo-auth-default-rtdb.firebaseio.com",
-  projectId: "prototipo-auth",
-  storageBucket: "prototipo-auth.appspot.com",
-  messagingSenderId: "173919840861",
-  appId: "1:173919840861:web:0867a363fe82285f507bb4"
+    apiKey: "AIzaSyDKBkjA0oTinqYcjmwvp7L3HcBBQVjKUkw",
+    authDomain: "ingresovst.firebaseapp.com",
+    projectId: "ingresovst",
+    storageBucket: "ingresovst.appspot.com",
+    messagingSenderId: "796747489927",
+    appId: "1:796747489927:web:22ca8712c7f40087684e22"
 }};

@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title style="text-align: center;">
-      Agregar Visitas
+      Registro de Visitas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card class="registro-card">
+  <ion-card style="margin-top: 30%;" class="registro-card">
     <ion-card-content>
       <!-- Nombre Completo -->
       <ion-item>
@@ -68,8 +68,8 @@
       <ion-spinner *ngIf="cargando" class="spinner"></ion-spinner>
 
       <!-- Botón deshabilitado durante la carga -->
-      <ion-button expand="full" (click)="agregarVisita()" [disabled]="cargando" class="boton">
-        Agregar Visita
+      <ion-button shape="round" expand="block" (click)="agregarVisita()" [disabled]="cargando" class="boton">
+        Registrar Visita
       </ion-button>
 
       <!-- Mensaje de error para formulario inválido -->

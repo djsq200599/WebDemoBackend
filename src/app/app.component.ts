@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FirestoreService } from './services/firestore.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private firestoreService: FirestoreService) { // Inyecta tu servicio FirestoreService
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.firestoreService.signInAnonymously(); // Llama al método signInAnonymously() cuando la aplicación se inicia
+  }
 }
